@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.datacollector.dao.SpiderMapper" >
+  <resultMap id="BaseResultMap" type="org.datacollector.model.Spider" >
+    <id column="spider_name" property="spiderName" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="title1" property="title1" jdbcType="VARCHAR" />
+    <result column="date1" property="date1" jdbcType="VARCHAR" />
+    <result column="title2" property="title2" jdbcType="VARCHAR" />
+    <result column="date2" property="date2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    spider_name, url, title1, date1, title2, date2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from spider
+    where spider_name = #{spiderName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from spider
+    where spider_name = #{spiderName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.datacollector.model.Spider" >
+    insert into spider (spider_name, url, title1, 
+      date1, title2, date2
+      )
+    values (#{spiderName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{title1,jdbcType=VARCHAR}, 
+      #{date1,jdbcType=VARCHAR}, #{title2,jdbcType=VARCHAR}, #{date2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.datacollector.model.Spider" >
+    insert into spider
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="spiderName != null" >
+        spider_name,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="title1 != null" >
+        title1,
+      </if>
+      <if test="date1 != null" >
+        date1,
+      </if>
+      <if test="title2 != null" >
+        title2,
+      </if>
+      <if test="date2 != null" >
+        date2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="spiderName != null" >
+        #{spiderName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null" >
+        #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="date1 != null" >
+        #{date1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="date2 != null" >
+        #{date2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.datacollector.model.Spider" >
+    update spider
+    <set >
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null" >
+        title1 = #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="date1 != null" >
+        date1 = #{date1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        title2 = #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="date2 != null" >
+        date2 = #{date2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where spider_name = #{spiderName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.datacollector.model.Spider" >
+    update spider
+    set url = #{url,jdbcType=VARCHAR},
+      title1 = #{title1,jdbcType=VARCHAR},
+      date1 = #{date1,jdbcType=VARCHAR},
+      title2 = #{title2,jdbcType=VARCHAR},
+      date2 = #{date2,jdbcType=VARCHAR}
+    where spider_name = #{spiderName,jdbcType=VARCHAR}
+  </update>
+</mapper>

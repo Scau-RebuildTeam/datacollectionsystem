@@ -1,0 +1,15 @@
+spring:
+  profiles: dev
+
+  resources: classpath:jdbc.properties
+
+  datasource:
+    url: ${jdbc.url}
+    username: ${jdbc.username}
+    password: ${jdbc.password}
+    driver-class-name: ${jdbc.driver}
+
+resources: classpath:jdbc.properties
+
+mybatis:
+  type-aliases-package:
