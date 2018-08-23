@@ -1,26 +1,37 @@
 package org.datacollector.model;
 
-import java.io.Serializable;
+import javax.persistence.*;
 
-public class Email implements Serializable {
+public class Email {
+    @Id
     private String address;
 
     private String name;
 
-    private static final long serialVersionUID = 1L;
-
+    /**
+     * @return address
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * @param address
+     */
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
     }
 
+    /**
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name
+     */
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }

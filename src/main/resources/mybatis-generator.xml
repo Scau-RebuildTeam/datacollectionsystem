@@ -4,8 +4,10 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <properties resource="jdbc.properties"/>
-    <context id="MySqlTable" targetRuntime="MyBatis3">
-        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <context id="baseset" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="org.datacollector.util.BaseMapper"/>
+        </plugin>
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
@@ -23,7 +25,7 @@
             <property name="enableSubPackage" value="true"/>
             <property name="trimStrings" value="true"/>
         </sqlMapGenerator>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.datacollector.dao" targetProject="./src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.datacollector.mappers" targetProject="./src/main/java">
             <property name="enableSubPackage" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaClientGenerator>
