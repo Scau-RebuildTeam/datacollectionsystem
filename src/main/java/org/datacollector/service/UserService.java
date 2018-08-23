@@ -9,6 +9,8 @@ public interface UserService extends BaseService<User> {
 
     void login(String userid, String password);
 
+    void login(String password);
+
     void signUp(String userid, String password);
 
 }

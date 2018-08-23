@@ -78,7 +78,8 @@
     -webkit-animation-duration: .6s;
     animation-duration: .6s;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both -webkit-animation-name: messageFadeInDown;
+    animation-fill-mode: both;
+    -webkit-animation-name: messageFadeInDown;
     animation-name: messageFadeInDown;
 }
 
@@ -97,10 +98,10 @@
     -webkit-animation-duration: .6s;
     animation-duration: .6s;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both -webkit-animation-name: messageFadeOutUp;
+    animation-fill-mode: both;
+    -webkit-animation-name: messageFadeOutUp;
     animation-name: messageFadeOutUp
 }
-
 
 /* .c-message--tip{
     text-align: center;

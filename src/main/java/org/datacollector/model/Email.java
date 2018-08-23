@@ -1,6 +1,6 @@
 package org.datacollector.model;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 
 public class Email {
     @Id
@@ -16,7 +16,7 @@ public class Email {
     }
 
     /**
-     * @param address
+     * @param address set email address
      */
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
@@ -30,7 +30,7 @@ public class Email {
     }
 
     /**
-     * @param name
+     * @param name set contact name
      */
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
