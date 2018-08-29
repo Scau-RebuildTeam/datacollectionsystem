@@ -20,23 +20,32 @@ public class DataServiceImpl implements DataService {
     private DataRepository repository;
 
     @Override
-    public long count() {
-        return repository.count();
+    public long count(String value) {
+        if (value.isEmpty()) {
+            return repository.count();
+        } else {
+            return repository.findBySpiderLikeOrDateLikeOrTitleLike(value, value, value).size();
+        }
     }
 
     @Override
     public List<Data> getData(int pageNum, int pageSize, String value) {
-        PageRequest pageRequest = PageRequest.of(pageNum - 1, pageSize, Sort.by("date"));
         if (value.isEmpty()) {
             return getAllData(pageNum, pageSize);
         } else {
-            return repository.findBySpiderOrDateOrTitle(value, value, value, pageRequest);
+            PageRequest pageRequest = PageRequest.of(pageNum, pageSize, Sort.by("date").descending());
+            return repository.findBySpiderLikeOrDateLikeOrTitleLike(value, value, value, pageRequest);
         }
     }
 
     @Override
     public List<Data> getAllData(int pageNum, int pageSize) {
-        PageRequest pageRequest = PageRequest.of(pageNum - 1, pageSize, Sort.by("date"));
+        PageRequest pageRequest = PageRequest.of(pageNum, pageSize, Sort.by("date").descending());
         return repository.findAll(pageRequest).getContent();
+    }
+
+    @Override
+    public long count() {
+        return 0;
     }
 }

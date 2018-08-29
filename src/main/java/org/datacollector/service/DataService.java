@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface DataService extends BaseNoSqlService<Data> {
 
+    long count(String value);
+
     List<Data> getData(int pageNum, int pageSize, String value);
 
     List<Data> getAllData(int pageNum, int pageSize);

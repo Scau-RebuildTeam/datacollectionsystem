@@ -127,11 +127,11 @@ let inits = [
                 data: 'mail'
             },
             {
-                data: 'name',
+                data: 'mail',
                 render: function (data, type, row, meta) {
-                    let name = row.name;
+                    let mail = row.mail;
                     let index = meta.row + 1 + meta.settings._iDisplayStart;
-                    return `<button class="btn btn-danger" onclick="peopleDelete('${name}','${index}');return false;">删除</button>`;
+                    return `<button class="btn btn-danger" onclick="peopleDelete('${mail}','${index}');return false;">删除</button>`;
                 }
             }
         ],
@@ -166,7 +166,7 @@ $(function () {
         "searching": true,
         "scorting": false,
         "ajax": {
-            url: '/DataCollectionSystem/data/get',
+            url: '/data/get',
             type: 'POST'
         },
         "columns": [
@@ -177,7 +177,7 @@ $(function () {
                 }
             },
             {
-                data: 'source'
+                data: 'spider'
             },
             {
                 data: 'title',
@@ -186,7 +186,7 @@ $(function () {
                 }
             },
             {
-                data: 'time'
+                data: 'date'
             }
         ],
         language: language_CN,
@@ -225,7 +225,7 @@ $(function () {
             myalert('success', '添加成功!');
         }).catch(err => {
             myalert('error', '添加失败!');
-        })
+        });
     });
 
     // 新增联系人
@@ -279,7 +279,7 @@ function getJson(obj) {
             method: 'POST',
             timeout: 10000,
             beforeSend: function () {
-                var BASEURL = '/DataCollectionSystem';
+                var BASEURL = '';
                 this.url = BASEURL + this.url;
                 myalert('success', '发送数据中');
                 if (!this.data) return;

@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface DataRepository extends PagingAndSortingRepository<Data, Object> {
 
-    List<Data> findBySpiderOrDateOrTitle(String spider, String date, String title, Pageable pageable);
+    List<Data> findBySpiderLikeOrDateLikeOrTitleLike(String spider, String date, String title, Pageable pageable);
+
+    List<Data> findBySpiderLikeOrDateLikeOrTitleLike(String spider, String date, String title);
 
 }

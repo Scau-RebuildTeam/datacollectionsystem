@@ -26,19 +26,19 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public boolean save(Email model) {
-        if (emailMapper.insert(model) <= 0) {
-            return false;
-        } else {
+        if (emailMapper.insert(model) == 1) {
             return true;
+        } else {
+            return false;
         }
     }
 
     @Override
     public boolean deleteById(Object id) {
-        if (emailMapper.deleteByPrimaryKey(id) <= 0) {
-            return false;
-        } else {
+        if (emailMapper.deleteByPrimaryKey(id) == 1) {
             return true;
+        } else {
+            return false;
         }
     }
 
@@ -51,7 +51,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     @Deprecated
     public List<Email> findAll() {
-        return null;
+        return findAll(0, 1000);
     }
 
     @Override

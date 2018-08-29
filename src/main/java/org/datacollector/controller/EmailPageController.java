@@ -6,6 +6,7 @@ import org.datacollector.model.Email;
 import org.datacollector.service.EmailService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,6 +14,8 @@ import java.util.List;
 /**
  * Created by 哲帆 on 2018.8.24.
  */
+@RestController
+@RequestMapping(value = "/contact")
 public class EmailPageController {
 
     @Resource
@@ -56,7 +59,7 @@ public class EmailPageController {
     @RequestMapping(value = "/delete")
     public JSONObject deleteContact(@RequestBody JSONObject json) {
         JSONObject res = new JSONObject();
-
+        System.out.println(json.getString("name"));
         if (emailService.deleteById(json.getString("name")))
             res.put("code", 10);
         else

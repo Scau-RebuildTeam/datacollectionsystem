@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +23,10 @@ public class SpiderManagementServiceImpl implements SpiderManagementService {
 
     @Override
     public boolean createSpider(String spiderName, String url, String title1, String date1, String title2, String date2) {
-        Spider spider = new Spider(spiderName, url, title1, date1, title2, date2);
+        Date time = new Date();
+        DateFormat d2 = DateFormat.getDateTimeInstance();
+        String createDate = d2.format(time);
+        Spider spider = new Spider(spiderName, url, title1, date1, title2, date2, createDate);
         return save(spider);
     }
 
@@ -37,19 +42,19 @@ public class SpiderManagementServiceImpl implements SpiderManagementService {
 
     @Override
     public boolean save(Spider model) {
-        if (spiderMapper.insert(model) <= 0) {
-            return false;
-        } else {
+        if (spiderMapper.insert(model) == 1) {
             return true;
+        } else {
+            return false;
         }
     }
 
     @Override
     public boolean deleteById(Object id) {
-        if (spiderMapper.deleteByPrimaryKey(id) <= 0) {
-            return false;
-        } else {
+        if (spiderMapper.deleteByPrimaryKey(id) == 1) {
             return true;
+        } else {
+            return false;
         }
     }
 

@@ -18,9 +18,13 @@ public class Spider {
 
     private String date2;
 
-    public Spider(String spiderName, String url, String title1, String date1, String title2, String date2) {
-        this.spiderName = spiderName;
+    @Column(name = "create_date")
+    private String createDate;
+
+    public Spider(String spider_name, String url, String title1, String date1, String title2, String date2, String createDate) {
+        this.spiderName = spider_name;
         this.url = url;
+        this.createDate = createDate;
         this.title1 = title1;
         this.date1 = date1;
         this.title2 = title2;
@@ -35,7 +39,7 @@ public class Spider {
     }
 
     /**
-     * @param spiderName set spider name
+     * @param spiderName
      */
     public void setSpiderName(String spiderName) {
         this.spiderName = spiderName == null ? null : spiderName.trim();
@@ -49,7 +53,7 @@ public class Spider {
     }
 
     /**
-     * @param url set spider init url
+     * @param url
      */
     public void setUrl(String url) {
         this.url = url == null ? null : url.trim();
@@ -63,7 +67,7 @@ public class Spider {
     }
 
     /**
-     * @param title1 set spider init title1
+     * @param title1
      */
     public void setTitle1(String title1) {
         this.title1 = title1 == null ? null : title1.trim();
@@ -77,7 +81,7 @@ public class Spider {
     }
 
     /**
-     * @param date1 set spider init date1
+     * @param date1
      */
     public void setDate1(String date1) {
         this.date1 = date1 == null ? null : date1.trim();
@@ -91,7 +95,7 @@ public class Spider {
     }
 
     /**
-     * @param title2 set spider init title2
+     * @param title2
      */
     public void setTitle2(String title2) {
         this.title2 = title2 == null ? null : title2.trim();
@@ -105,9 +109,23 @@ public class Spider {
     }
 
     /**
-     * @param date2 set spider init date2
+     * @param date2
      */
     public void setDate2(String date2) {
         this.date2 = date2 == null ? null : date2.trim();
+    }
+
+    /**
+     * @return create_date
+     */
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    /**
+     * @param createDate
+     */
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate == null ? null : createDate.trim();
     }
 }

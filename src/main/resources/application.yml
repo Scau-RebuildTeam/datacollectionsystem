@@ -1,6 +1,6 @@
 spring:
-  profiles:
-    active: dev
+#  profiles:
+#    active: dev
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     # 数据库访问配置
@@ -32,6 +32,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://39.105.9.158:27017/spider
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 
 logging:
   path: D:\\
@@ -53,7 +56,6 @@ pagehelper:
     support-methods-arguments: true
     params: count=countSql
     offset-as-page-num: true
-
 
 
 

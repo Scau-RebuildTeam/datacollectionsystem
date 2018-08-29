@@ -34,7 +34,7 @@ public class SpiderManagementPageController {
             JSONObject obj = new JSONObject();
             obj.put("name", aData.getSpiderName());
             obj.put("url", aData.getUrl());
-            obj.put("time", "xxxx");
+            obj.put("time", aData.getCreateDate());
 
             array.add(obj);
         }
