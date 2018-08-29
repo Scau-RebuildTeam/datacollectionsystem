@@ -1,42 +1,38 @@
 package org.datacollector;
 
-import org.datacollector.dao.DataRepository;
-import org.datacollector.dao.UserRepository;
-import org.datacollector.mappers.EmailMapper;
-import org.datacollector.mappers.SpiderMapper;
-import org.datacollector.model.User;
+import org.datacollector.service.DataService;
+import org.datacollector.service.EmailService;
+import org.datacollector.service.SpiderManagementService;
+import org.datacollector.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DatacollectionsystemApplicationTests {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    private DataRepository dataRepository;
+    private SpiderManagementService spiderManagementService;
 
     @Autowired
-    private EmailMapper emailMapper;
+    private EmailService emailService;
 
     @Autowired
-    private SpiderMapper spiderMapper;
+    private DataService dataService;
 
     @Test
     public void contextLoads() {
-        List<User> list = userRepository.findAll();
-        System.out.println(list.size());
-        System.out.println(list.get(0).getPassword());
-        System.out.println(dataRepository.findBySpider("国家基金").get(0).getTitle());
-        System.out.println(emailMapper.selectByPrimaryKey("c").getAddress());
-        System.out.println(spiderMapper.selectByPrimaryKey("c").getDate1());
+        System.out.println(userService.login("admin"));
+        System.out.println(spiderManagementService.count());
+        System.out.println(emailService.findAll(0, 20).get(0).getAddress());
+        System.out.println(dataService.getAllData(1, 10).size());
+        System.out.println(dataService.getAllData(1, 10).get(1).getTitle());
     }
 
 }

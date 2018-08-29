@@ -18,6 +18,15 @@ public class Spider {
 
     private String date2;
 
+    public Spider(String spiderName, String url, String title1, String date1, String title2, String date2) {
+        this.spiderName = spiderName;
+        this.url = url;
+        this.title1 = title1;
+        this.date1 = date1;
+        this.title2 = title2;
+        this.date2 = date2;
+    }
+
     /**
      * @return spider_name
      */
